@@ -1,0 +1,36 @@
+# Terraform working directories
+**/.terraform/
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Terraform plan files
+*.tfplan
+
+# Terraform variable files
+*.tfvars
+*.tfvars.json
+
+# Allow example variable files
+!*.tfvars.example
+
+# Terraform crash logs
+crash.log
+crash.*.log
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Azure local configuration
+.azure/
+
+# Editor configuration
+.vscode/
+.idea/
+
+# OS-generated files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.48.1.52935",
+      "templateHash": "5566152185730088617"
+    }
+  },
+  "parameters": {
+    "policyName": {
+      "type": "string",
+      "defaultValue": "northstar-require-environment-tag",
+      "metadata": {
+        "description": "Name of the policy definition"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyDefinitions",
+      "apiVersion": "2023-04-01",
+      "name": "[parameters('policyName')]",
+      "properties": {
+        "policyType": "Custom",
+        "mode": "Indexed",
+        "displayName": "Northstar - Require environment tag",
+        "description": "Audits taggable resources missing the environment tag",
+        "policyRule": {
+          "if": {
+            "field": "tags[environment]",
+            "exists": "false"
+          },
+          "then": {
+            "effect": "audit"
+          }
+        }
+      }
+    }
+  ]
+}
